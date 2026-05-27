@@ -6,16 +6,63 @@
   <title>LedgerLite – Privacy Policy</title>
   <style>
     body { font-family: -apple-system, sans-serif; max-width: 640px; margin: 60px auto; padding: 0 24px; color: #1a1a1a; line-height: 1.7; }
-    h1 { font-size: 24px; }
-    p { font-size: 16px; color: #444; }
+    h1 { font-size: 24px; margin-bottom: 4px; }
+    h2 { font-size: 17px; margin-top: 36px; margin-bottom: 8px; }
+    p, li { font-size: 16px; color: #444; }
+    ul { padding-left: 20px; }
+    a { color: #007aff; }
+    .updated { font-size: 14px; color: #888; margin-bottom: 32px; }
+    hr { border: none; border-top: 1px solid #e5e5e5; margin: 40px 0; }
   </style>
 </head>
 <body>
   <h1>LedgerLite Privacy Policy</h1>
-  <p>Last updated: May 2026</p>
-  <p>LedgerLite stores all data — expenses, subscriptions, and categories — locally on your device. Nothing is transmitted to us or any third party.</p>
-  <p>Exchange rates are fetched from <a href="https://frankfurter.dev">frankfurter.dev</a> and <a href="https://open.er-api.com">open.er-api.com</a> when you log an expense in a foreign currency. These requests contain no personal information.</p>
-  <p>We do not collect analytics, crash reports, advertising identifiers, or any other data. We have no servers and no account system.</p>
-  <p>Questions: open an issue on the app's GitHub repository.</p>
+  <p class="updated">Last updated: May 2026</p>
+
+  <p>LedgerLite is a personal finance app built on a simple principle: your financial data belongs to you and stays on your device.</p>
+
+  <h2>Data we collect</h2>
+  <p>We collect nothing. LedgerLite has no servers, no account system, and no analytics. All data you enter — expenses, subscriptions, budgets, and categories — is stored exclusively on your device using Apple's SwiftData framework.</p>
+
+  <h2>Data we do not collect</h2>
+  <ul>
+    <li>No personal information (name, email, phone, address)</li>
+    <li>No financial account credentials</li>
+    <li>No advertising or tracking identifiers</li>
+    <li>No crash reports or usage analytics</li>
+    <li>No location data</li>
+  </ul>
+
+  <h2>Exchange rate requests</h2>
+  <p>When you log an expense in a foreign currency, LedgerLite fetches live exchange rates from two free public APIs:</p>
+  <ul>
+    <li><a href="https://frankfurter.dev">frankfurter.dev</a> (primary)</li>
+    <li><a href="https://open.er-api.com">open.er-api.com</a> (fallback)</li>
+  </ul>
+  <p>These are standard HTTPS requests containing only the currency codes you requested. No personal data is included. Rates are cached locally so repeat lookups do not require additional network calls.</p>
+
+  <h2>iCloud</h2>
+  <p>LedgerLite does not currently use iCloud sync. Data remains local to the device it was entered on.</p>
+
+  <h2>Face ID / Touch ID</h2>
+  <p>If you enable the biometric lock, authentication is handled entirely by iOS (LocalAuthentication framework). LedgerLite never sees or stores your biometric data.</p>
+
+  <h2>Third-party sharing</h2>
+  <p>We do not sell, share, or transmit your data to any third party — ever.</p>
+
+  <h2>Children</h2>
+  <p>LedgerLite does not knowingly collect information from anyone, including children under 13.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy ever changes, the updated version will be published at this URL with a new "Last updated" date.</p>
+
+  <hr>
+
+  <h2>Contact</h2>
+  <p>Questions or concerns? Reach us by email or open an issue on GitHub:</p>
+  <ul>
+    <li>Email: <a href="mailto:enestalip.chelik@gmail.com">enestalip.chelik@gmail.com</a></li>
+    <li>GitHub: <a href="https://github.com/bluemadisonblue/ledger_lite/issues">github.com/bluemadisonblue/ledger_lite/issues</a></li>
+  </ul>
 </body>
 </html>
