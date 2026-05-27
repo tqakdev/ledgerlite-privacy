@@ -13,48 +13,92 @@
     a { color: #007aff; }
     .updated { font-size: 14px; color: #888; margin-bottom: 32px; }
     hr { border: none; border-top: 1px solid #e5e5e5; margin: 40px 0; }
+    .tldr { background: #f5f5f7; border-radius: 10px; padding: 16px 20px; margin: 24px 0 0 0; }
+    .tldr p { margin: 0; color: #1a1a1a; }
   </style>
 </head>
 <body>
   <h1>LedgerLite Privacy Policy</h1>
-  <p class="updated">Last updated: May 2026</p>
+  <p class="updated">Last updated: 27 May 2026</p>
 
   <p>LedgerLite is a personal finance app built on a simple principle: your financial data belongs to you and stays on your device.</p>
 
+  <div class="tldr">
+    <p><strong>Summary:</strong> LedgerLite has no servers, no accounts, no analytics, and no tracking. Everything you enter stays on your device. The only network requests the app ever makes are to two public exchange-rate APIs, and those requests contain only currency codes — never your data.</p>
+  </div>
+
   <h2>Data we collect</h2>
-  <p>We collect nothing. LedgerLite has no servers, no account system, and no analytics. All data you enter — expenses, subscriptions, budgets, and categories — is stored exclusively on your device using Apple's SwiftData framework.</p>
+  <p>We collect nothing. LedgerLite has no servers, no account system, and no analytics. All data you enter — expenses, subscriptions, budgets, categories, and notes — is stored exclusively on your device using Apple's SwiftData framework.</p>
 
   <h2>Data we do not collect</h2>
   <ul>
     <li>No personal information (name, email, phone, address)</li>
     <li>No financial account credentials</li>
-    <li>No advertising or tracking identifiers</li>
+    <li>No bank, card, or transaction data from external sources</li>
+    <li>No advertising or tracking identifiers (no IDFA, no fingerprinting)</li>
     <li>No crash reports or usage analytics</li>
     <li>No location data</li>
+    <li>No contacts, photos, calendar, or other system data</li>
   </ul>
 
   <h2>Exchange rate requests</h2>
   <p>When you log an expense in a foreign currency, LedgerLite fetches live exchange rates from two free public APIs:</p>
   <ul>
-    <li><a href="https://frankfurter.dev">frankfurter.dev</a> (primary)</li>
+    <li><a href="https://frankfurter.dev">frankfurter.dev</a> (primary, ECB-backed)</li>
     <li><a href="https://open.er-api.com">open.er-api.com</a> (fallback)</li>
   </ul>
-  <p>These are standard HTTPS requests containing only the currency codes you requested. No personal data is included. Rates are cached locally so repeat lookups do not require additional network calls.</p>
+  <p>These are standard HTTPS requests containing only the three-letter currency codes you requested (for example, <code>EUR</code>, <code>JPY</code>). No personal data, account identifier, expense amount, merchant name, or device identifier is included.</p>
+  <p>Rates are cached locally on your device so repeat lookups for the same day do not require additional network calls. If you only ever use your home currency, the app makes no network requests at all.</p>
+  <p>Like any HTTPS request from any app or browser, these requests are visible to the receiving server, which may log your IP address per its own privacy practices. We have no relationship with these services beyond being a public consumer of their API.</p>
+
+  <h2>Notifications</h2>
+  <p>If you allow notifications, LedgerLite schedules <strong>local</strong> reminders directly on your device — for example, two days before each subscription billing date or when your spending approaches a category budget. All notification content is generated on your device. Nothing is ever sent through Apple's push notification servers or any third party.</p>
+  <p>Notifications are entirely optional. You can disable them at any time in iOS Settings → Notifications → LedgerLite. The app remains fully functional without them.</p>
+
+  <h2>Widgets</h2>
+  <p>The LedgerLite Home Screen and Lock Screen widgets display your daily total and upcoming subscriptions. They read from the same on-device database as the main app via an Apple App Group container. No data leaves your device.</p>
+
+  <h2>Siri and Shortcuts</h2>
+  <p>LedgerLite supports Siri voice commands (for example, "Log $5 coffee in LedgerLite") and Apple Shortcuts. Siri's voice processing is handled by iOS on your device. The app only receives the parsed result and writes it to your local database. We never see your voice recordings or transcripts.</p>
+
+  <h2>Search (Spotlight)</h2>
+  <p>LedgerLite indexes your expenses into iOS Spotlight so you can find them from your Home Screen search. This index lives entirely on your device and is managed by iOS. It is removed automatically when you uninstall the app or when you delete an expense.</p>
+
+  <h2>CSV export and import</h2>
+  <p>You can export all your data as a CSV file from Settings → Data → Export CSV, and import a CSV from the same screen. Exported files leave the app and are under your control — for example, when you share them via AirDrop, email, the Files app, or any other destination you choose. We have no visibility into where you send these files. Imported files are read once into the local database and not retained outside it.</p>
 
   <h2>iCloud</h2>
-  <p>LedgerLite does not currently use iCloud sync. Data remains local to the device it was entered on.</p>
+  <p>LedgerLite does not currently use iCloud sync. Data remains local to the device it was entered on. If iCloud sync is added in a future version, this policy will be updated before that feature ships, and the feature will be off by default.</p>
+  <p>If you have iCloud device backup enabled in iOS, your device backup will include LedgerLite's database as part of the standard backup, the same as any other app's local data. That backup is encrypted and handled by Apple under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a> — we have no access to it.</p>
 
   <h2>Face ID / Touch ID</h2>
-  <p>If you enable the biometric lock, authentication is handled entirely by iOS (LocalAuthentication framework). LedgerLite never sees or stores your biometric data.</p>
+  <p>If you enable the biometric lock, authentication is handled entirely by iOS via the LocalAuthentication framework. LedgerLite only receives a yes-or-no result. We never see, store, or transmit your biometric data — and neither does iOS.</p>
 
   <h2>Third-party sharing</h2>
-  <p>We do not sell, share, or transmit your data to any third party — ever.</p>
+  <p>We do not sell, share, rent, or transmit your data to any third party — ever. There are no analytics SDKs, advertising SDKs, attribution SDKs, or third-party trackers of any kind in the app.</p>
+
+  <h2>Data retention and deletion</h2>
+  <p>Because all your data is stored locally, you have full control at all times:</p>
+  <ul>
+    <li><strong>Delete an individual entry:</strong> swipe left on any expense or subscription row.</li>
+    <li><strong>Delete a category:</strong> Settings → Categories → swipe to delete (system categories are protected).</li>
+    <li><strong>Delete everything:</strong> Settings → Data → Reset All Data. This permanently removes all expenses, subscriptions, budgets, and budget alert history from your device.</li>
+    <li><strong>Uninstall the app:</strong> removing LedgerLite from your device deletes the entire local database and Spotlight index. We retain no backup or copy on any server.</li>
+  </ul>
+  <p>You never need to contact us to delete your data — it is entirely under your control through the app itself.</p>
 
   <h2>Children</h2>
-  <p>LedgerLite does not knowingly collect information from anyone, including children under 13.</p>
+  <p>LedgerLite is not directed at children and does not knowingly collect information from anyone, including children under 13 (or the applicable age in your country). Because the app collects no personal information from any user, this is true regardless of age.</p>
+
+  <h2>Regulatory compliance</h2>
+  <p>Because LedgerLite collects no personal data, processes no data on remote servers, and stores all information locally on your device under your sole control, the obligations of regulations such as the EU GDPR, the UK GDPR, the California CCPA / CPRA, and the US COPPA are addressed by design. You can exercise the rights granted under those laws — access, portability, and deletion — directly through the app's built-in CSV export and "Reset All Data" features, with no need to contact us.</p>
+  <p>If you believe a specific right under your local law requires action we have not described above, contact us using the details below and we will respond as the law requires.</p>
+
+  <h2>Security</h2>
+  <p>Your data is protected by the same iOS sandboxing and Data Protection class that Apple applies to every app's local storage. You can add an additional layer by enabling the biometric lock in Settings. We recommend keeping your device passcode strong and your iOS up to date.</p>
 
   <h2>Changes to this policy</h2>
-  <p>If this policy ever changes, the updated version will be published at this URL with a new "Last updated" date.</p>
+  <p>If this policy ever changes, the updated version will be published at this URL with a new "Last updated" date. For material changes — such as the introduction of iCloud sync or any new network feature — the change will be announced in the app's release notes before it ships.</p>
 
   <hr>
 
@@ -64,5 +108,7 @@
     <li>Email: <a href="mailto:enestalip.chelik@gmail.com">enestalip.chelik@gmail.com</a></li>
     <li>GitHub: <a href="https://github.com/bluemadisonblue/ledger_lite/issues">github.com/bluemadisonblue/ledger_lite/issues</a></li>
   </ul>
+
+  <p style="font-size: 13px; color: #888; margin-top: 48px;">LedgerLite is an independent project. It is not affiliated with, endorsed by, or sponsored by Apple Inc. or any of the third-party services mentioned above.</p>
 </body>
 </html>
